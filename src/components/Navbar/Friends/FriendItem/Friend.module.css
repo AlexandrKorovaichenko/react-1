@@ -1,0 +1,17 @@
+.item{
+    background-color: coral;
+    display: grid;
+    place-items: center;
+}
+
+.avatar img{
+    width: 20px;
+}
+
+.name{
+    color: white;
+}
+
+.status{
+    color: white;
+}

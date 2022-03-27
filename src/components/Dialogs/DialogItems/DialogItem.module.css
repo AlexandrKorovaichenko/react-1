@@ -1,0 +1,11 @@
+.dialog {
+    padding: 10px;
+}
+
+.item {
+    color:blue;
+}
+
+.active {
+    color: rgb(184, 158, 11);
+}

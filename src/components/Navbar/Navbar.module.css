@@ -1,0 +1,19 @@
+.nav { 
+    grid-area: n; 
+}
+
+a {
+    color: white;
+}
+
+.item {
+    color: white;
+}
+
+.active{
+    color: gold;
+}
+
+.menuLeft {
+    background-color:darkgoldenrod;
+}
