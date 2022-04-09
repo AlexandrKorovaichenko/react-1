@@ -9,34 +9,27 @@ let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageCount);
 
     let pages = [];
-    for(let i=1; i<=pagesCount; i++){
-        pages.push(i);   
-    };
+    for(let i=1; i<=pagesCount; i++){ pages.push(i) };
 
 
     return (
 
         <div>
-            
                 <div>
                     {
-                        pages.map( p => {
+                        pages.map( (p) => {
                             return <span  key={p}
                                             onClick = { (e) => { props.onPageChanged(p) } } 
                                             className={ p === props.currentPage ? classUsers.selectedPage : "" }>{p}</span>         
                             }
                         )
                     }
-
                 </div>
-
-
+                
                 {
+            
                     props.users.map( u => <div key={u.id}>
 
-                        {
-                            //console.log(props.followVisible)
-                        }
 
                         <span>
 

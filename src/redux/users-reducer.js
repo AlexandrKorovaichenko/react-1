@@ -13,7 +13,7 @@ const DEL_BUTTON_VISIBLE = "DEL_BUTTON_VISIBLE";
 let initialState = {
     users: [],
     pageCount: 5,
-    totalUsersCount: 0,
+    totalUsersCount: 5,
     currentPage: 1,
     isFetching: false,
     followVisible: [] // кнока Follow/Unfollow у юсеров
@@ -144,7 +144,15 @@ export const delButtonVisible = (id) => {
 export const getUsersThunkCreator = ( currentPage, pageCount ) => {
     return (dispatch) => {
         //if(usersLength){
+
+            //debugger;
+            
+            dispatch(setCurrentPage(currentPage));
+
             usersAPI.getUsers(currentPage, pageCount).then(response => {
+
+                    //debugger;
+
                     dispatch(setTotalUsers(20));    
                     dispatch(setUsers(response.items));
                     dispatch(setIsFetching(false));

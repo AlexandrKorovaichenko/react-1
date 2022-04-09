@@ -1,7 +1,7 @@
 import React from 'react';
 import classProfileInfo from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/preloader";
-import Status from "./Status"
+import StatusHook from "./StatusHook"
 
 
 const ProfileInfo = (props) => {
@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
       <div>  
           <img alt = {props.profile.fullName ? props.profile.fullName : ""} src = {props.profile.photos.large} />
           
-          <Status status = { props.status } 
+          <StatusHook status = { props.status } 
                   userId = { props.userId } 
                   updateStatusThunkCreator = { props.updateStatusThunkCreator }
                   getStatusThunkCreator = { props.getStatusThunkCreator }

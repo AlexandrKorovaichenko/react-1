@@ -43,18 +43,17 @@ export const setAuthData = (userId, email, login, isAuth) => (
                 });
 
 
-export const getAuthDataThunkCreator = () => {
-    return (dispatch) => {
-                            authAPI.me().then( response => {
-                                if( response.data.resultCode === 0 ){
-                                        console.log(response.data.data);
-                                        //debugger;
-                                        let {email, id, login} = response.data.data;        
-                                        dispatch(setAuthData(id, email, login, true));
-                                    }
-                                });
-        }
-    }
+export const getAuthDataThunkCreator = () => (dispatch) => {
+                
+                return authAPI.me().then( response => {
+                    if( response.data.resultCode === 0 ){
+                        console.log(response.data.data);
+                        // debugger;
+                        let {email, id, login} = response.data.data;        
+                            dispatch(setAuthData(id, email, login, true));
+                        }
+                });
+            }
 
 
 

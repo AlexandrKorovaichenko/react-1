@@ -11,8 +11,15 @@ import { getProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator
 class ProfileContainer extends React.Component {
     
     componentDidMount(){
-            //let userId = this.props.match ? this.props.match.params.userId : 22766;   
-            let userId = this.props.match ? this.props.match.params.userId : this.props.userId;   
+            
+            //debugger;
+            let userId = this.props.match ? this.props.match.params.userId : 22766;
+            //let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.userId;   
+
+            if(!userId){
+                this.props.history.push("/login");
+            }
+
             this.props.getProfileThunkCreator(userId);
             this.props.getStatusThunkCreator(userId);
         }

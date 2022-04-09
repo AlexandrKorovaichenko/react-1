@@ -12,14 +12,26 @@ import HeaderContainer  from './components/Header/HeaderContainer';
 import Login            from "./components/Login/Login"
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { initializedApp } from "./redux/app-reducer";
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import Preloader from './components/common/preloader/preloader';
 
 
-const App = () => {
+class App extends React.Component {
 
     //<Route path='/profile/*'  element = { <Profile store={props.store} /> } />
     //<Route path='/dialogs/*'  element = { <DialogsContainer store={props.store} /> } />
     
-    return (
+    componentDidMount(){ this.props.initializedApp(); }
+
+    render() {
+      
+      if(!this.props.initialized){
+        return <Preloader />
+      }
+      
+      return (
 
       <BrowserRouter>
         <div className='app-wraper'>
@@ -34,9 +46,10 @@ const App = () => {
                 <Route path='/profile'  element = { <ProfileContainer /> } />
                 <Route path='/profile/:userId'  element = { <ProfileContainer /> } />
                 
-                <Route path='/dialogs/*'  element = { <DialogsContainer /> } />
+                <Route path='/dialogs/*'  element = { <DialogsContainer /> } /> 
+
                 <Route path='/users/*'    element = { <UsersContainer /> } />
-                                                    
+
                 <Route path='/news/*'     element = {<News />} />
                 <Route path='/music/*'    element = {<Music />} />
                 <Route path='/setting/*'  element = {<Setting />} />
@@ -51,7 +64,15 @@ const App = () => {
       
       
     );
+  }
+
 }
 
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+}) 
  
-export default App;
+export default compose(
+    connect( mapStateToProps, {initializedApp} ) (App)
+  );
+
